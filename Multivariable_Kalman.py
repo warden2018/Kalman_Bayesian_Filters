@@ -249,15 +249,15 @@ class KalmanFilter(object):
             for i, (z, F, Q, H, R, B, u) in enumerate(zip(zs, Fs, Qs, Hs, Rs, Bs, us)):
 
                 self.predict(u=u, B=B, F=F, Q=Q)
-                logger.debug("Kalman filter x-prior is: %s",np.array_repr(tracker.x).replace('\n', ''))
-                logger.debug("Kalman filter P is: %s",np.array_repr(tracker.P).replace('\n', ''))
+                #logger.debug("Kalman filter x-prior is: %s",np.array_repr(tracker.x).replace('\n', ''))
+                #logger.debug("Kalman filter P is: %s",np.array_repr(tracker.P).replace('\n', ''))
                 means_p[i, :] = self.x
                 covariances_p[i, :, :] = self.P
 
                 self.update(z, R=R, H=H)
-                logger.debug("Kalman filter z is: %s",np.array_repr(z).replace('\n', ''))
-                logger.debug("Kalman filter x-post is: %s",np.array_repr(tracker.x).replace('\n', ''))
-                logger.debug("Kalman filter P-post is: %s",np.array_repr(tracker.P).replace('\n', ''))
+                #logger.debug("Kalman filter z is: %s",np.array_repr(z).replace('\n', ''))
+                #logger.debug("Kalman filter x-post is: %s",np.array_repr(tracker.x).replace('\n', ''))
+                #logger.debug("Kalman filter P-post is: %s",np.array_repr(tracker.P).replace('\n', ''))
                 means[i, :] = self.x
                 covariances[i, :, :] = self.P
 
